@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三周年礼物</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        body {
+            background-color: #ffe4f2;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            text-align: center;
+            color: #ff69b4;
+            animation: fadeIn 1s ease-out;
+        }
+
+        img {
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        button {
+            background-color: #ffb6c1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            transition: transform 0.3s ease-out;
+        }
+
+        button:hover {
+            background-color: #ff8c94;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        #yes-button {
+            width: 100px;
+            transition: transform 0.3s ease-out, width 0.3s ease-out;
+        }
+
+        #no-button {
+            width: 100px;
+            transition: transform 0.3s ease-out;
+        }
+
+        .left-text {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        .left-text p:first-of-type {
+            text-indent: 2em;
+        }
+
+        .left-text p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 背景音乐 -->
+    <audio id="background-music" src="bgm/lucky.mp3" loop preload="auto"></audio>
+
+    <!-- 初始页面 -->
+    <div id="initial-page" style="display: flex; flex-direction: column; align-items: center; margin-top: 15%;">
+        <img src="images/photo.jpg" alt="男女生图片" style="max-width: 300px; margin-bottom: 20px;">
+        <button id="enter-button">进入芝兰玉树的秘密基地</button>
+    </div>
+
+    <!-- 询问名字页面 -->
+    <div id="name-page" style="display: none;">
+        <img src="images/normal.png" alt="正常小猫图片">
+        <p>你终于来啦(^･o･^)ﾉ,你叫什么名字呀？</p>
+        <input type="text" id="name-input">
+        <button id="name-submit">提交</button>
+    </div>
+
+    <!-- 欢迎页面 -->
+    <div id="welcome-page" style="display: none;">
+        <img src="images/happy.png" alt="开心小猫图片">
+        <p>欢迎我亲爱的宝宝狗！接下来有三个小小的问题：</p>
+        <button id="accept-challenge">接受挑战</button>
+    </div>
+
+    <!-- 生气页面 -->
+    <div id="angry-page" style="display: none;">
+        <img src="images/angry.png" alt="生气小猫图片">
+        <p>那你不是我要找的小狗！o(´^｀)o</p>
+    </div>
+
+    <!-- 纪念日问题页面 -->
+    <div id="anniversary-page" style="display: none;">
+        <img src="images/normal.png" alt="正常小猫图片">
+        <p>请匹配以下三个纪念日时间：</p>
+        <p>A. 8月4日</p>
+        <p>B.12月30日</p>
+        <p>C.4月22日</p>
+        <p>“第一次看电影”：
+            <select id="movie">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+        </p>
+        <p>“第一次坐摩天轮”:
+            <select id="ferris-wheel">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+        </p>
+        <p>“第一穿情侣装”:
+            <select id="couple-clothes">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+        </p>
+        <button id="anniversary-submit">提交</button>
+    </div>
+
+    <!-- 纪念日问题答对页面 -->
+    <div id="anniversary-correct" style="display: none;">
+        <img src="images/happy.png" alt="开心小猫图片">
+        <p>恭喜你答对啦！还算你心里有我</p>
+        <button id="next-question1">下一题</button>
+    </div>
+
+    <!-- 纪念日问题答错页面 -->
+    <div id="anniversary-wrong" style="display: none;">
+        <img src="images/angry.png" alt="生气小猫图片">
+        <p>游戏失败，达成结局：小猫大发雷霆：“qzr你完蛋了！！！”</p>
+    </div>
+
+    <!-- 逻辑推理问题页面 -->
+    <div id="logic-page" style="display: none;">
+        <img src="images/normal.png" alt="正常小猫图片">
+        <p>一只叫眠眠的漂亮小猫和一只叫郗郗的帅气小狗今天谈恋爱三周年啦，他们十分恩爱。<br><br>
+            以下四个陈述，其中两个陈述为真，三个陈述为假。<br><br>
+            请通过逻辑推理，确定眠眠和郗郗的品种以及他们各自喜欢的食物。</p>
+        <p>（1）眠眠是蓝猫，且郗郗爱吃牛肉干。</p>
+        <p>（2）要么眠眠是金渐层，要么郗郗爱吃牛肉干。</p>
+        <p>（3）只有郗郗是萨摩耶，眠眠才爱吃虾。</p>
+        <p>（4）如果眠眠是金渐层，那么她爱吃小鱼干。</p>
+        <p>（5）郗郗不是金毛，或者郗郗不爱吃火腿肠。</p>
+        <p>那么，眠眠的品种为：
+            <select id="mianmian-breed">
+                <option value="A">A.蓝猫</option>
+                <option value="B">B.金渐层</option>
+            </select>
+        </p>
+        <p>眠眠爱吃：
+            <select id="mianmian-food">
+                <option value="A">A.小鱼干</option>
+                <option value="B">B.虾</option>
+            </select>
+        </p>
+        <p>郗郗的品种为：
+            <select id="xixi-breed">
+                <option value="A">A.金毛</option>
+                <option value="B">B.萨摩耶</option>
+            </select>
+        </p>
+        <p>郗郗爱吃：
+            <select id="xixi-food">
+                <option value="A">A.牛肉干</option>
+                <option value="B">B.火腿肠</option>
+            </select>
+        </p>
+        <button id="logic-submit">提交</button>
+    </div>
+
+    <!-- 逻辑推理问题答对页面 -->
+    <div id="logic-correct" style="display: none;">
+        <img src="images/happy.png" alt="开心小猫图片">
+        <p>恭喜你答对啦！眠眠和郗郗的感情更好了！</p>
+        <button id="next-question2">下一题</button>
+    </div>
+
+    <!-- 逻辑推理问题答错页面 -->
+    <div id="logic-wrong" style="display: none;">
+        <img src="images/annoyed.png" alt="无语小猫图片">
+        <p>糟糕......答错啦，看来还得多和小猫玩逻辑推理游戏呢</p>
+    </div>
+
+    <!-- 最后一个问题页面 -->
+    <div id="last-question" style="display: none;">
+        <img id="last-cat" src="images/normal.png" alt="正常小猫图片">
+        <p>最后一个问题，你的女朋友是不是非常温柔？</p>
+        <button id="yes-button">是</button>
+        <button id="no-button">不是</button>
+    </div>
+
+    <!-- 答对页面 -->
+    <div id="correct-page" style="display: none;">
+        <img src="images/hug.png" alt="小猫和小狗的拥抱图片">
+        <p>恭喜你答对了！你真有眼光( ^３^ )</p>
+        <button id="get-gift">点击即获得小礼物一个</button>
+    </div>
+
+    <!-- 礼物页面 -->
+    <div id="gift-page" style="display: none;">
+        <p>恭喜你获得超级无敌至尊炫酷充电宝一只！充电方式：贴贴/亲亲</p>
+        <img src="images/tietie.png" alt="贴贴图片" style="max-width: 200px;">
+        <p>另附赠普通磁吸充电宝一个</p>
+        <img src="images/charge.png" alt="充电宝图片" style="max-width: 50px;">
+        <button id="cat-message" style="margin: 0 auto; display: block;">小猫想对你说</button>
+    </div>
+
+    <!-- 三周年页面 -->
+    <div id="anniversary-final" style="display: none;">
+        <img src="images/anniversary.jpg" alt="三周年图片">
+        <div class="left-text">
+            <p>
+                恋爱三年啦，非常高兴和我的小狗一起从高二走到大二，
+                也谢谢你用幸福的酵母把我变成一块很蓬松的小蛋糕。
+                “有幸相遇，就愿这段路永远放晴。”
+                新的一年里，祝芝兰玉树长长久久，甜甜蜜蜜，
+                同心共筑中国梦，携手奋进第四年(ˊ˘ˋ*)♡
+            </p>
+        </div>
+        <button id="easter-egg">小彩蛋</button>
+    </div>
+
+    <!-- 烟花视频页面 -->
+    <div id="fireworks-page" style="display: none;">
+        <video id="fireworks-video" autoplay loop muted style="max-width: 600px; max-height: 300px;">
+            <source src="video/yanhua.mp4" type="video/mp4">
+            你的浏览器不支持播放该视频。
+        </video>
+        <div class="left-text">
+            <p>
+                高中你想用代码给我写烟花，但是因为现在的我也还是不会，所以直接插入了一个烟花视频（挠头）<br><br><br><br>
+                作者的话：<br>
+                花了一天速成网页制作工具和部署方法，不会写代码的下场是写了两千字promote，调教了gpt三天。<br>
+                让我看看是哪个大二计算机系的学生依然是零基础╰（‵□′╰）两年学了0个专业知识。<br>
+                一开始的想法其实只是想做是和不是二选一那一个问题，用gpt写出来发现效果还不错之后就贪得无厌……最难的点居然是写逻辑题，ai根本写不了逻辑完备的题目，最后只好自己编。<br>
+                花了最多时间的是捏图片和处理图片，虽然很喜欢捏捏，但是每一张都要改成透明背景并且去水印，痛苦并快乐着哈哈哈。然后我还经常好不容易捏完抠完图了，发现有的没有腮红有的没有爪子，只能从头再来……<br>
+                甚至如何下载本地音乐、bgm如何转mp3都搞了一个晚上。<br>
+                虽然很简陋且粗糙，但我已经很满意了呜呜，不许嫌弃！
+            </p>
+        </div>
+    </div>
+
+     <script>
+        // 初始化音频
+        const backgroundMusic = document.getElementById('background-music');
+
+        // 播放音频
+        function playBackgroundMusic() {
+            backgroundMusic.volume = 0.5; // 设置音量
+            backgroundMusic.play();
+        }
+
+        // 当用户点击进入按钮时切换页面并播放音乐
+        document.getElementById('enter-button').addEventListener('click', function () {
+            document.getElementById('initial-page').style.display = 'none';
+            document.getElementById('name-page').style.display = 'block';
+            playBackgroundMusic(); // 在用户交互后播放音乐
+        });
+
+
+        document.getElementById('enter-button').addEventListener('click', function () {
+            document.getElementById('initial-page').style.display = 'none';
+            document.getElementById('name-page').style.display = 'block';
+        });
+
+        document.getElementById('name-submit').addEventListener('click', function () {
+            const name = document.getElementById('name-input').value;
+            const correctNames = ['邱祉睿', 'qzr', '高彦郗', '郗郗'];
+            if (correctNames.includes(name)) {
+                document.getElementById('name-page').style.display = 'none';
+                document.getElementById('welcome-page').style.display = 'block';
+            } else {
+                document.getElementById('name-page').style.display = 'none';
+                document.getElementById('angry-page').style.display = 'block';
+            }
+        });
+
+        document.getElementById('accept-challenge').addEventListener('click', function () {
+            document.getElementById('welcome-page').style.display = 'none';
+            document.getElementById('anniversary-page').style.display = 'block';
+        });
+
+        document.getElementById('anniversary-submit').addEventListener('click', function () {
+            const movie = document.getElementById('movie').value;
+            const ferrisWheel = document.getElementById('ferris-wheel').value;
+            const coupleClothes = document.getElementById('couple-clothes').value;
+            if (movie === 'B' && ferrisWheel === 'C' && coupleClothes === 'A') {
+                document.getElementById('anniversary-page').style.display = 'none';
+                document.getElementById('anniversary-correct').style.display = 'block';
+            } else {
+                document.getElementById('anniversary-page').style.display = 'none';
+                document.getElementById('anniversary-wrong').style.display = 'block';
+            }
+        });
+
+        document.getElementById('next-question1').addEventListener('click', function () {
+            document.getElementById('anniversary-correct').style.display = 'none';
+            document.getElementById('logic-page').style.display = 'block';
+        });
+
+        document.getElementById('logic-submit').addEventListener('click', function () {
+            const mianmianBreed = document.getElementById('mianmian-breed').value;
+            const mianmianFood = document.getElementById('mianmian-food').value;
+            const xixiBreed = document.getElementById('xixi-breed').value;
+            const xixiFood = document.getElementById('xixi-food').value;
+            if (mianmianBreed === 'B' && mianmianFood === 'A' && xixiBreed === 'A' && xixiFood === 'B') {
+                document.getElementById('logic-page').style.display = 'none';
+                document.getElementById('logic-correct').style.display = 'block';
+            } else {
+                document.getElementById('logic-page').style.display = 'none';
+                document.getElementById('logic-wrong').style.display = 'block';
+            }
+        });
+
+        document.getElementById('next-question2').addEventListener('click', function () {
+            document.getElementById('logic-correct').style.display = 'none';
+            document.getElementById('last-question').style.display = 'block';
+        });
+
+        let noClickCount = 0;
+        document.getElementById('yes-button').addEventListener('click', function () {
+            document.getElementById('last-question').style.display = 'none';
+            document.getElementById('correct-page').style.display = 'block';
+        });
+
+        document.getElementById('no-button').addEventListener('click', function () {
+            noClickCount++;
+            const noButton = document.getElementById('no-button');
+            const yesButton = document.getElementById('yes-button');
+            const lastCat = document.getElementById('last-cat');
+            switch (noClickCount) {
+                case 1:
+                    noButton.textContent = '你确定这么认为吗';
+                    yesButton.style.width = '150px';
+                    lastCat.src = 'images/confused.png';
+                    break;
+                case 2:
+                    noButton.textContent = '我会很伤心的';
+                    yesButton.style.width = '200px';
+                    lastCat.src = 'images/annoyed.png';
+                    break;
+                case 3:
+                    noButton.textContent = '你最好再考虑一下';
+                    yesButton.style.width = '250px';
+                    lastCat.src = 'images/angry.png';
+                    break;
+                case 4:
+                    noButton.textContent = '不许选这个！！！';
+                    yesButton.style.width = '300px';
+                    lastCat.src = 'images/sad.png';
+                    break;
+                case 5:
+                    noButton.textContent = '是';
+                    yesButton.style.width = '300px';
+                    lastCat.src = 'images/sad.png';
+                    break;
+            }
+            if (noClickCount >= 5) {
+                document.querySelectorAll('#yes-button, #no-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                        document.getElementById('last-question').style.display = 'none';
+                        document.getElementById('correct-page').style.display = 'block';
+                    });
+                });
+            }
+        });
+
+        document.getElementById('get-gift').addEventListener('click', function () {
+            document.getElementById('correct-page').style.display = 'none';
+            document.getElementById('gift-page').style.display = 'block';
+        });
+
+        document.getElementById('cat-message').addEventListener('click', function () {
+            document.getElementById('gift-page').style.display = 'none';
+            document.getElementById('anniversary-final').style.display = 'block';
+        });
+
+        document.getElementById('easter-egg').addEventListener('click', function () {
+            document.getElementById('anniversary-final').style.display = 'none';
+            document.getElementById('fireworks-page').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

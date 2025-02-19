@@ -73,17 +73,17 @@
 
 <body>
     <!-- 背景音乐 -->
-    <audio id="background-music" src="bgm/lucky.mp3" loop preload="auto"></audio>
+    <audio id="background-music" src="lucky.mp3" loop preload="auto"></audio>
 
     <!-- 初始页面 -->
     <div id="initial-page" style="display: flex; flex-direction: column; align-items: center; margin-top: 15%;">
-        <img src="images/photo.jpg" alt="男女生图片" style="max-width: 300px; margin-bottom: 20px;">
+        <img src="photo.jpg" alt="男女生图片" style="max-width: 300px; margin-bottom: 20px;">
         <button id="enter-button">进入芝兰玉树的秘密基地</button>
     </div>
 
     <!-- 询问名字页面 -->
     <div id="name-page" style="display: none;">
-        <img src="images/normal.png" alt="正常小猫图片">
+        <img src="normal.png" alt="正常小猫图片">
         <p>你终于来啦(^･o･^)ﾉ,你叫什么名字呀？</p>
         <input type="text" id="name-input">
         <button id="name-submit">提交</button>
@@ -91,20 +91,20 @@
 
     <!-- 欢迎页面 -->
     <div id="welcome-page" style="display: none;">
-        <img src="images/happy.png" alt="开心小猫图片">
+        <img src="happy.png" alt="开心小猫图片">
         <p>欢迎我亲爱的宝宝狗！接下来有三个小小的问题：</p>
         <button id="accept-challenge">接受挑战</button>
     </div>
 
     <!-- 生气页面 -->
     <div id="angry-page" style="display: none;">
-        <img src="images/angry.png" alt="生气小猫图片">
+        <img src="angry.png" alt="生气小猫图片">
         <p>那你不是我要找的小狗！o(´^｀)o</p>
     </div>
 
     <!-- 纪念日问题页面 -->
     <div id="anniversary-page" style="display: none;">
-        <img src="images/normal.png" alt="正常小猫图片">
+        <img src="normal.png" alt="正常小猫图片">
         <p>请匹配以下三个纪念日时间：</p>
         <p>A. 8月4日</p>
         <p>B.12月30日</p>
@@ -135,20 +135,20 @@
 
     <!-- 纪念日问题答对页面 -->
     <div id="anniversary-correct" style="display: none;">
-        <img src="images/happy.png" alt="开心小猫图片">
+        <img src="happy.png" alt="开心小猫图片">
         <p>恭喜你答对啦！还算你心里有我</p>
         <button id="next-question1">下一题</button>
     </div>
 
     <!-- 纪念日问题答错页面 -->
     <div id="anniversary-wrong" style="display: none;">
-        <img src="images/angry.png" alt="生气小猫图片">
+        <img src="angry.png" alt="生气小猫图片">
         <p>游戏失败，达成结局：小猫大发雷霆：“qzr你完蛋了！！！”</p>
     </div>
 
     <!-- 逻辑推理问题页面 -->
     <div id="logic-page" style="display: none;">
-        <img src="images/normal.png" alt="正常小猫图片">
+        <img src="normal.png" alt="正常小猫图片">
         <p>一只叫眠眠的漂亮小猫和一只叫郗郗的帅气小狗今天谈恋爱三周年啦，他们十分恩爱。<br><br>
             以下四个陈述，其中两个陈述为真，三个陈述为假。<br><br>
             请通过逻辑推理，确定眠眠和郗郗的品种以及他们各自喜欢的食物。</p>
@@ -186,20 +186,20 @@
 
     <!-- 逻辑推理问题答对页面 -->
     <div id="logic-correct" style="display: none;">
-        <img src="images/happy.png" alt="开心小猫图片">
+        <img src="happy.png" alt="开心小猫图片">
         <p>恭喜你答对啦！眠眠和郗郗的感情更好了！</p>
         <button id="next-question2">下一题</button>
     </div>
 
     <!-- 逻辑推理问题答错页面 -->
     <div id="logic-wrong" style="display: none;">
-        <img src="images/annoyed.png" alt="无语小猫图片">
+        <img src="annoyed.png" alt="无语小猫图片">
         <p>糟糕......答错啦，看来还得多和小猫玩逻辑推理游戏呢</p>
     </div>
 
     <!-- 最后一个问题页面 -->
     <div id="last-question" style="display: none;">
-        <img id="last-cat" src="images/normal.png" alt="正常小猫图片">
+        <img id="last-cat" src="normal.png" alt="正常小猫图片">
         <p>最后一个问题，你的女朋友是不是非常温柔？</p>
         <button id="yes-button">是</button>
         <button id="no-button">不是</button>
@@ -207,23 +207,23 @@
 
     <!-- 答对页面 -->
     <div id="correct-page" style="display: none;">
-        <img src="images/hug.png" alt="小猫和小狗的拥抱图片">
-        <p>恭喜你答对了！你真有眼光( ^３^ )</p>
+        <img src="hug.png" alt="小猫和小狗的拥抱图片">
+        <p>恭喜你答对了！你真有眼光( ^³^ )</p>
         <button id="get-gift">点击即获得小礼物一个</button>
     </div>
 
     <!-- 礼物页面 -->
     <div id="gift-page" style="display: none;">
         <p>恭喜你获得超级无敌至尊炫酷充电宝一只！充电方式：贴贴/亲亲</p>
-        <img src="images/tietie.png" alt="贴贴图片" style="max-width: 200px;">
+        <img src="tietie.png" alt="贴贴图片" style="max-width: 200px;">
         <p>另附赠普通磁吸充电宝一个</p>
-        <img src="images/charge.png" alt="充电宝图片" style="max-width: 50px;">
+        <img src="charge.png" alt="充电宝图片" style="max-width: 50px;">
         <button id="cat-message" style="margin: 0 auto; display: block;">小猫想对你说</button>
     </div>
 
     <!-- 三周年页面 -->
     <div id="anniversary-final" style="display: none;">
-        <img src="images/anniversary.jpg" alt="三周年图片">
+        <img src="anniversary.jpg" alt="三周年图片">
         <div class="left-text">
             <p>
                 恋爱三年啦，非常高兴和我的小狗一起从高二走到大二，
@@ -239,7 +239,7 @@
     <!-- 烟花视频页面 -->
     <div id="fireworks-page" style="display: none;">
         <video id="fireworks-video" autoplay loop muted style="max-width: 600px; max-height: 300px;">
-            <source src="video/yanhua.mp4" type="video/mp4">
+            <source src="yanhua.mp4" type="video/mp4">
             你的浏览器不支持播放该视频。
         </video>
         <div class="left-text">
@@ -348,27 +348,27 @@
                 case 1:
                     noButton.textContent = '你确定这么认为吗';
                     yesButton.style.width = '150px';
-                    lastCat.src = 'images/confused.png';
+                    lastCat.src = 'confused.png';
                     break;
                 case 2:
                     noButton.textContent = '我会很伤心的';
                     yesButton.style.width = '200px';
-                    lastCat.src = 'images/annoyed.png';
+                    lastCat.src = 'annoyed.png';
                     break;
                 case 3:
                     noButton.textContent = '你最好再考虑一下';
                     yesButton.style.width = '250px';
-                    lastCat.src = 'images/angry.png';
+                    lastCat.src = 'angry.png';
                     break;
                 case 4:
                     noButton.textContent = '不许选这个！！！';
                     yesButton.style.width = '300px';
-                    lastCat.src = 'images/sad.png';
+                    lastCat.src = 'sad.png';
                     break;
                 case 5:
                     noButton.textContent = '是';
                     yesButton.style.width = '300px';
-                    lastCat.src = 'images/sad.png';
+                    lastCat.src = 'sad.png';
                     break;
             }
             if (noClickCount >= 5) {

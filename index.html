@@ -13,29 +13,20 @@
         
         body {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             background-image: url('image1.png');
             background-size: cover;
             background-position: center;
             position: relative;
-            overflow: hidden;
+            overflow-y: auto;
             font-family: 'Microsoft YaHei', sans-serif;
         }
         
         .content-container {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* 修改此处，使内容顶部对齐 */
-            padding: 20px; /* 添加内边距，避免内容紧贴边缘 */
+            padding: 20px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
         }
         
         h1 {
@@ -72,7 +63,7 @@
     </style>
 </head>
 <body>
-    <div class="content-container" id="content">
+    <div class="content-container">
         <h1>煲仔饭背后的故事——红军巧渡金沙江</h1>
         <p>在红军长征的漫漫征途中，1935年5月，红军来到了金沙江畔，面临着前有天险、后有追兵的艰难局面。金沙江位于长江上游，穿行于川滇边界的深山狭谷之间，江面宽阔，水急浪大，是红军北上的一道天然屏障。而此时，蒋介石已意识到红军的意图，迅速下达命令，控制渡口，毁船封江，妄图将红军消灭于川、滇、黔边境地区。</p>
         <p>面对如此严峻的形势，中革军委经过慎重研究，决定兵分三路抢渡金沙江：红一军团为左路，攻占元谋龙街渡；红三军团为右路，急进禄劝洪门渡；军委纵队为中路，抢占皎平渡。各路红军接到命令后，迅速行动起来。</p>
@@ -88,17 +79,8 @@
         <p>从1935年5月3日至9日，在7个昼夜里，2万余中央红军主力利用这6条船，从皎平渡口成功渡过金沙江，未掉一人一马。两天后，敌人追兵赶到江边时，红军早已远去，只留下空荡荡的渡口。</p>
         <p>红军巧渡金沙江，是长征中的一个关键转折点。这一胜利使中央红军摆脱了几十万国民党军的围追堵截，粉碎了蒋介石围歼红军于川、滇、黔边境的计划，为红军北上陕北、实现战略转移奠定了坚实基础。同时，这一胜利彰显了红军的机智、勇敢和顽强的战斗精神，展现了中革军委卓越的战略决策能力和指挥艺术。在极端困难的情况下，红军将士们凭借坚定的信念、紧密的协作和无畏的勇气，创造了军事史上的奇迹，为中国革命保存了有生力量，在中国革命史上留下了浓墨重彩的一笔。</p>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 获取内容容器
-            const contentContainer = document.getElementById('content');
-            
-            // 添加点击事件监听器
-            document.body.addEventListener('click', function() {
-                // 显示内容
-                contentContainer.style.opacity = '1';
-            });
+</body>
+</html>
         });
     </script>
 </body>

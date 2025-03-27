@@ -28,7 +28,8 @@
             background-position: center;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: center; /* 垂直居中 */
+            align-items: center; /* 水平居中 */
             padding: 20px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
@@ -97,6 +98,37 @@
             width: 100%;
             height: auto;
             max-width: 800px;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #555;
+            margin: 0 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #fff;
+            width: 0;
         }
         
         /* 故事页面样式 */
@@ -168,26 +200,25 @@
                 <source src="river.mp4" type="video/mp4">
                 您的浏览器不支持视频播放。
             </video>
+            <div class="video-controls">
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
         </div>
     </div>
     
     <!-- 故事页面 -->
     <div class="story-container" id="storyPage">
         <button class="back-btn" id="backToHomeFromStory">返回</button>
-        <h1 class="story-title">煲仔饭背后的故事——红军巧渡金沙江</h1>
-        <p class="story-content">在红军长征的漫漫征途中，1935年5月，红军来到了金沙江畔，面临着前有天险、后有追兵的艰难局面。金沙江位于长江上游，穿行于川滇边界的深山狭谷之间，江面宽阔，水急浪大，是红军北上的一道天然屏障。而此时，蒋介石已意识到红军的意图，迅速下达命令，控制渡口，毁船封江，妄图将红军消灭于川、滇、黔边境地区。</p>
-        <p class="story-content">面对如此严峻的形势，中革军委经过慎重研究，决定兵分三路抢渡金沙江：红一军团为左路，攻占元谋龙街渡；红三军团为右路，急进禄劝洪门渡；军委纵队为中路，抢占皎平渡。各路红军接到命令后，迅速行动起来。</p>
-        <p class="story-content">红一军团第四团先头分队3个连在团长王开湘、政委杨成武的率领下，化装成国民党“中央军”，巧妙地骗过了沿途敌人，不费一枪一弹巧取了禄劝、武定、元谋三县，直趋金沙江畔的龙街渡口。然而，到达龙街渡口后，他们发现这里江宽水急，加上国民党军机频繁低空袭扰，架设浮桥的计划未能成功，且没有找到船只，渡江受阻。</p>
-        <p class="story-content">与此同时，红三军团先头部队第十三团于5月4日抵达金沙江畔的洪门渡，但同样只弄到一条渡船，此处水流湍急，无法架桥，大部队难以迅速过江。</p>
-        <p class="story-content">在这关键时刻，干部团承担起了至关重要的任务。1935年4月30日，中革军委命令干部团为中路先遣部队，由总参谋长刘伯承率领，抢占皎平渡。刘伯承深知任务艰巨，他率领干部团先遣营伪装成国民党军，以一昼夜行军100余公里的速度，日夜兼程，于5月2日午夜12时左右赶到皎平渡口。在当地人张朝寿的帮助下，他们幸运地找到了一条旧船，随后又夺得一条从对岸划过来的船。先遣连连长萧应棠率领一个排乘船悄悄摸上对岸，成功控制了厘金局，夺取了江北岸的中武山渡口。</p>
-        <p class="story-content">5月3日，陈赓率干部团主力渡江，击溃了川军刘元瑭指挥的2个团，夺取了中武山渡口以北20公里的通安州，为大部队渡江打开了通道。干部团占领渡口的时间比中革军委规定的时限整整提前了两天，这宝贵的两天为中央红军赢得了极其关键的渡江先机。</p>
-        <p class="story-content">5月3日晚，毛泽东、朱德、周恩来等率领军委纵队赶到皎平渡过江，并在北岸组建渡江指挥部，由刘伯承任司令员、陈云任政委，全权负责指挥渡江行动。刘伯承亲自制定了《渡河守则》，对渡江的步骤、纪律等进行了精细规划，确保渡江行动有序进行。</p>
-        <p class="story-content">渡江仅有6只船，而且船只破旧，江水经常从船底上涌，每次来回，都需要专人在船舱中将船底的水用木桶倒入江中，才能再次使用。因江流湍急，每小时只能来回三四次，异常危险。红军先后找来30多位船工，每名船工每天工资为5元现洋，每只船安排了6名船工，3人一班，来回划10次又换另一班，歇人不歇船，保证船只24小时不停运转。</p>
-        <p class="story-content">当中革军委得知红三军团在洪门渡所得渡船很少，红一军团在龙街渡口架设浮桥没有成功时，果断于5月5日下令，除留红十三团在洪门渡过江，红一军团和红三军团主力全部火速赶往皎平渡过江。</p>
-        <p class="story-content">为了掩护主力部队安全渡江，董振堂等指挥红五军团在石板河坚决阻击敌人。红五军团利用有利地形，构筑坚固防线，多次打退追敌的进攻。在完成阻击任务后，他们交替掩护，有序撤出阵地，赶到皎平渡渡江。</p>
-        <p class="story-content">担负掩护任务、独立作战的红九军团，在攻占会泽后扩红1500余人，于5月6日从树桔渡全部渡过金沙江。</p>
-        <p class="story-content">从1935年5月3日至9日，在7个昼夜里，2万余中央红军主力利用这6条船，从皎平渡口成功渡过金沙江，未掉一人一马。两天后，敌人追兵赶到江边时，红军早已远去，只留下空荡荡的渡口。</p>
-        <p class="story-content">红军巧渡金沙江，是长征中的一个关键转折点。这一胜利使中央红军摆脱了几十万国民党军的围追堵截，粉碎了蒋介石围歼红军于川、滇、黔边境的计划，为红军北上陕北、实现战略转移奠定了坚实基础。同时，这一胜利彰显了红军的机智、勇敢和顽强的战斗精神，展现了中革军委卓越的战略决策能力和指挥艺术。在极端困难的情况下，红军将士们凭借坚定的信念、紧密的协作和无畏的勇气，创造了军事史上的奇迹，为中国革命保存了有生力量，在中国革命史上留下了浓墨重彩的一笔。</p>
+        <h1 class="story-title">巧渡金沙江：长征中的生死竞速</h1>
+        <p class="story-content">1935 年 5 月，中央红军长征至川滇交界处的金沙江畔。这条长江上游的天险江面开阔、暗流汹涌，蒋介石调集 40 万重兵封锁渡口、焚毁船只，妄图将红军围歼于江畔。中革军委临危不乱，兵分三路抢渡：红一军团佯攻龙街渡，红三军团进击洪门渡，军委纵队直插皎平渡，红五军团则在石板河阻击尾追之敌。</p>
+        <p class="story-content">左路红一军团先头部队化装成国民党军，智取禄劝、武定、元谋三县，却在龙街渡遭遇难题 —— 江面宽达百米，水流湍急，敌机轮番轰炸，架桥材料被炸毁，搜寻无果的战士们望着滔滔江水心急如焚。右路红三军团抵达洪门渡时，仅找到一条渡船，湍急的漩涡让木船难以稳定航行，大部队渡江无望。两路大军陷入绝境，胜负的天平悄然向中路倾斜。</p>
+        <p class="story-content">刘伯承率领的干部团肩负重任。这支由红军精英组成的部队伪装成 “中央军”，以一昼夜奔袭 120 公里的急行军，于 5 月 2 日夜逼近皎平渡。在船工张朝寿的指引下，他们从芦苇丛中拖出一条漏雨的旧船，又截获一条从对岸驶来的商船，连夜偷渡北岸。先遣连连长萧应棠率一排战士摸黑登岸，突袭击溃守军，缴获渡船 4 艘，一举控制渡口。此时距军委规定时限提前了整整两天，为全军赢得了宝贵的喘息之机。</p>
+        <p class="story-content">5 月 3 日，毛泽东、朱德率军委纵队抵达皎平渡，立即成立渡江指挥部。刘伯承亲自制定《渡河守则》，将 6 条木船分为两班，每船配备 6 名船工，实行 “歇人不歇船” 的轮班制。船工们冒着生命危险，在浪高两米的江面上往返划行，每次摆渡都需专人用木桶舀出渗入的江水。尽管每小时仅能往返三四次，红军将士们严守纪律，以 “分秒必争” 的信念有序登船。5 月 5 日，军委急令红一、三军团主力驰援皎平渡，两路大军历经强行军，在夜色中汇入渡江队伍。</p>
+        <p class="story-content">后卫红五军团在石板河的阻击战堪称悲壮。面对数倍于己的敌军，董振堂指挥部队依托山地构筑工事，以 “人在阵地在” 的决心血战三昼夜，子弹打光了就用石头砸，阵地失而复得三次。完成掩护任务后，他们边打边撤，最终在渡江的最后时刻登上渡船。独立行动的红九军团在会泽扩红 1500 人后，也从树桔渡顺利过江。</p>
+        <p class="story-content">从 5 月 3 日至 9 日，整整七昼夜，2 万余红军主力凭借 6 条木船成功渡江。当国民党追兵于 5 月 11 日抵达时， 只有空荡荡的渡口和岸边丢弃的国民党军服，见证着这场奇迹般的胜利。</p>
+        <p class="story-content">巧渡金沙江是红军长征的关键转折点。它不仅使中央红军彻底跳出国民党围追堵截的包围圈，更以 “七船渡万军” 的壮举，彰显了中革军委的战略智慧与红军将士的钢铁意志。此战中，化装奇袭的战术、精准高效的调度、军民一心的协作，共同谱写出一曲革命英雄主义的赞歌，为中国革命保存了火种，也为长征的最终胜利奠定了坚实基础。</p>
     </div>
 
     <script>
@@ -204,6 +235,8 @@
             
             // 视频播放器
             const videoPlayer = document.getElementById('video-player');
+            const progressBar = document.getElementById('progress-bar');
+            const progress = document.getElementById('progress');
             
             // 点击视频介绍按钮，进入视频页面
             videoOptionBtn.addEventListener('click', function() {
@@ -211,6 +244,20 @@
                 videoPage.style.display = 'block';
                 // 视频自动播放（需要用户交互触发，这里通过按钮点击触发）
                 videoPlayer.play();
+                
+                // 更新进度条
+                videoPlayer.addEventListener('timeupdate', function() {
+                    const percent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
+                    progress.style.width = percent + '%';
+                });
+                
+                // 点击进度条跳转
+                progressBar.addEventListener('click', function(e) {
+                    const rect = progressBar.getBoundingClientRect();
+                    const percent = (e.clientX - rect.left) / rect.width * 100;
+                    const seekTime = videoPlayer.duration * (percent / 100);
+                    videoPlayer.currentTime = seekTime;
+                });
             });
             
             // 点击故事介绍按钮，进入故事页面
@@ -225,6 +272,7 @@
                 homePage.style.display = 'flex';
                 // 暂停视频播放
                 videoPlayer.pause();
+                videoPlayer.currentTime = 0;
             });
             
             // 点击返回按钮，从故事页面返回选择界面
@@ -232,10 +280,6 @@
                 storyPage.style.display = 'none';
                 homePage.style.display = 'flex';
             });
-        });
-    </script>
-</body>
-</html>
         });
     </script>
 </body>

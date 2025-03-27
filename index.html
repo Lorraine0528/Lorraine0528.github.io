@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>红军巧渡金沙江故事</title>
+    <title>红军在会东县的故事</title>
     <style>
         * {
             margin: 0;
@@ -14,71 +14,226 @@
         body {
             width: 100%;
             min-height: 100vh;
-            background-image: url('image1.png');
-            background-size: cover;
-            background-position: center;
             position: relative;
             overflow-y: auto;
             font-family: 'Microsoft YaHei', sans-serif;
         }
         
-        .content-container {
+        /* 选择界面样式 */
+        .home-container {
             width: 100%;
+            min-height: 100vh;
+            background-image: url('river.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         
-        h1 {
-            font-size: 2.5rem;
+        .home-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .option-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .option-btn {
+            width: 200px;
+            padding: 1rem;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .option-btn:hover {
+            background-color: white;
+        }
+        
+        /* 视频页面样式 */
+        .video-container {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            background-image: url('red.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .video-wrapper {
+            width: 100%;
+            height: calc(100vh - 60px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #video-player {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+        }
+        
+        /* 故事页面样式 */
+        .story-container {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            background-image: url('red.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .story-title {
+            font-size: 2rem;
             font-weight: bold;
             margin-bottom: 1.5rem;
         }
         
-        p {
+        .story-content {
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 1rem;
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            .home-title, .story-title {
+                font-size: 1.5rem;
             }
             
-            p {
+            .story-content {
                 font-size: 0.9rem;
             }
         }
         
         @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5rem;
+            .home-title, .story-title {
+                font-size: 1.2rem;
             }
             
-            p {
+            .story-content {
                 font-size: 0.8rem;
+            }
+            
+            .option-btn {
+                width: 160px;
+                padding: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="content-container">
-        <h1>煲仔饭背后的故事——红军巧渡金沙江</h1>
-        <p>在红军长征的漫漫征途中，1935年5月，红军来到了金沙江畔，面临着前有天险、后有追兵的艰难局面。金沙江位于长江上游，穿行于川滇边界的深山狭谷之间，江面宽阔，水急浪大，是红军北上的一道天然屏障。而此时，蒋介石已意识到红军的意图，迅速下达命令，控制渡口，毁船封江，妄图将红军消灭于川、滇、黔边境地区。</p>
-        <p>面对如此严峻的形势，中革军委经过慎重研究，决定兵分三路抢渡金沙江：红一军团为左路，攻占元谋龙街渡；红三军团为右路，急进禄劝洪门渡；军委纵队为中路，抢占皎平渡。各路红军接到命令后，迅速行动起来。</p>
-        <p>红一军团第四团先头分队3个连在团长王开湘、政委杨成武的率领下，化装成国民党“中央军”，巧妙地骗过了沿途敌人，不费一枪一弹巧取了禄劝、武定、元谋三县，直趋金沙江畔的龙街渡口。然而，到达龙街渡口后，他们发现这里江宽水急，加上国民党军机频繁低空袭扰，架设浮桥的计划未能成功，且没有找到船只，渡江受阻。</p>
-        <p>与此同时，红三军团先头部队第十三团于5月4日抵达金沙江畔的洪门渡，但同样只弄到一条渡船，此处水流湍急，无法架桥，大部队难以迅速过江。</p>
-        <p>在这关键时刻，干部团承担起了至关重要的任务。1935年4月30日，中革军委命令干部团为中路先遣部队，由总参谋长刘伯承率领，抢占皎平渡。刘伯承深知任务艰巨，他率领干部团先遣营伪装成国民党军，以一昼夜行军100余公里的速度，日夜兼程，于5月2日午夜12时左右赶到皎平渡口。在当地人张朝寿的帮助下，他们幸运地找到了一条旧船，随后又夺得一条从对岸划过来的船。先遣连连长萧应棠率领一个排乘船悄悄摸上对岸，成功控制了厘金局，夺取了江北岸的中武山渡口。</p>
-        <p>5月3日，陈赓率干部团主力渡江，击溃了川军刘元瑭指挥的2个团，夺取了中武山渡口以北20公里的通安州，为大部队渡江打开了通道。干部团占领渡口的时间比中革军委规定的时限整整提前了两天，这宝贵的两天为中央红军赢得了极其关键的渡江先机。</p>
-        <p>5月3日晚，毛泽东、朱德、周恩来等率领军委纵队赶到皎平渡过江，并在北岸组建渡江指挥部，由刘伯承任司令员、陈云任政委，全权负责指挥渡江行动。刘伯承亲自制定了《渡河守则》，对渡江的步骤、纪律等进行了精细规划，确保渡江行动有序进行。</p>
-        <p>渡江仅有6只船，而且船只破旧，江水经常从船底上涌，每次来回，都需要专人在船舱中将船底的水用木桶倒入江中，才能再次使用。因江流湍急，每小时只能来回三四次，异常危险。红军先后找来30多位船工，每名船工每天工资为5元现洋，每只船安排了6名船工，3人一班，来回划10次又换另一班，歇人不歇船，保证船只24小时不停运转。</p>
-        <p>当中革军委得知红三军团在洪门渡所得渡船很少，红一军团在龙街渡口架设浮桥没有成功时，果断于5月5日下令，除留红十三团在洪门渡过江，红一军团和红三军团主力全部火速赶往皎平渡过江。</p>
-        <p>为了掩护主力部队安全渡江，董振堂等指挥红五军团在石板河坚决阻击敌人。红五军团利用有利地形，构筑坚固防线，多次打退追敌的进攻。在完成阻击任务后，他们交替掩护，有序撤出阵地，赶到皎平渡渡江。</p>
-        <p>担负掩护任务、独立作战的红九军团，在攻占会泽后扩红1500余人，于5月6日从树桔渡全部渡过金沙江。</p>
-        <p>从1935年5月3日至9日，在7个昼夜里，2万余中央红军主力利用这6条船，从皎平渡口成功渡过金沙江，未掉一人一马。两天后，敌人追兵赶到江边时，红军早已远去，只留下空荡荡的渡口。</p>
-        <p>红军巧渡金沙江，是长征中的一个关键转折点。这一胜利使中央红军摆脱了几十万国民党军的围追堵截，粉碎了蒋介石围歼红军于川、滇、黔边境的计划，为红军北上陕北、实现战略转移奠定了坚实基础。同时，这一胜利彰显了红军的机智、勇敢和顽强的战斗精神，展现了中革军委卓越的战略决策能力和指挥艺术。在极端困难的情况下，红军将士们凭借坚定的信念、紧密的协作和无畏的勇气，创造了军事史上的奇迹，为中国革命保存了有生力量，在中国革命史上留下了浓墨重彩的一笔。</p>
+    <!-- 选择界面 -->
+    <div class="home-container" id="home">
+        <h1 class="home-title">红军在会东县的故事——巧渡金沙江</h1>
+        <div class="option-buttons">
+            <button class="option-btn" id="video-option">视频介绍</button>
+            <button class="option-btn" id="story-option">故事介绍</button>
+        </div>
     </div>
+    
+    <!-- 视频页面 -->
+    <div class="video-container" id="videoPage">
+        <button class="back-btn" id="backToHomeFromVideo">返回</button>
+        <div class="video-wrapper">
+            <video id="video-player" autoplay muted>
+                <source src="river.mp4" type="video/mp4">
+                您的浏览器不支持视频播放。
+            </video>
+        </div>
+    </div>
+    
+    <!-- 故事页面 -->
+    <div class="story-container" id="storyPage">
+        <button class="back-btn" id="backToHomeFromStory">返回</button>
+        <h1 class="story-title">煲仔饭背后的故事——红军巧渡金沙江</h1>
+        <p class="story-content">在红军长征的漫漫征途中，1935年5月，红军来到了金沙江畔，面临着前有天险、后有追兵的艰难局面。金沙江位于长江上游，穿行于川滇边界的深山狭谷之间，江面宽阔，水急浪大，是红军北上的一道天然屏障。而此时，蒋介石已意识到红军的意图，迅速下达命令，控制渡口，毁船封江，妄图将红军消灭于川、滇、黔边境地区。</p>
+        <p class="story-content">面对如此严峻的形势，中革军委经过慎重研究，决定兵分三路抢渡金沙江：红一军团为左路，攻占元谋龙街渡；红三军团为右路，急进禄劝洪门渡；军委纵队为中路，抢占皎平渡。各路红军接到命令后，迅速行动起来。</p>
+        <p class="story-content">红一军团第四团先头分队3个连在团长王开湘、政委杨成武的率领下，化装成国民党“中央军”，巧妙地骗过了沿途敌人，不费一枪一弹巧取了禄劝、武定、元谋三县，直趋金沙江畔的龙街渡口。然而，到达龙街渡口后，他们发现这里江宽水急，加上国民党军机频繁低空袭扰，架设浮桥的计划未能成功，且没有找到船只，渡江受阻。</p>
+        <p class="story-content">与此同时，红三军团先头部队第十三团于5月4日抵达金沙江畔的洪门渡，但同样只弄到一条渡船，此处水流湍急，无法架桥，大部队难以迅速过江。</p>
+        <p class="story-content">在这关键时刻，干部团承担起了至关重要的任务。1935年4月30日，中革军委命令干部团为中路先遣部队，由总参谋长刘伯承率领，抢占皎平渡。刘伯承深知任务艰巨，他率领干部团先遣营伪装成国民党军，以一昼夜行军100余公里的速度，日夜兼程，于5月2日午夜12时左右赶到皎平渡口。在当地人张朝寿的帮助下，他们幸运地找到了一条旧船，随后又夺得一条从对岸划过来的船。先遣连连长萧应棠率领一个排乘船悄悄摸上对岸，成功控制了厘金局，夺取了江北岸的中武山渡口。</p>
+        <p class="story-content">5月3日，陈赓率干部团主力渡江，击溃了川军刘元瑭指挥的2个团，夺取了中武山渡口以北20公里的通安州，为大部队渡江打开了通道。干部团占领渡口的时间比中革军委规定的时限整整提前了两天，这宝贵的两天为中央红军赢得了极其关键的渡江先机。</p>
+        <p class="story-content">5月3日晚，毛泽东、朱德、周恩来等率领军委纵队赶到皎平渡过江，并在北岸组建渡江指挥部，由刘伯承任司令员、陈云任政委，全权负责指挥渡江行动。刘伯承亲自制定了《渡河守则》，对渡江的步骤、纪律等进行了精细规划，确保渡江行动有序进行。</p>
+        <p class="story-content">渡江仅有6只船，而且船只破旧，江水经常从船底上涌，每次来回，都需要专人在船舱中将船底的水用木桶倒入江中，才能再次使用。因江流湍急，每小时只能来回三四次，异常危险。红军先后找来30多位船工，每名船工每天工资为5元现洋，每只船安排了6名船工，3人一班，来回划10次又换另一班，歇人不歇船，保证船只24小时不停运转。</p>
+        <p class="story-content">当中革军委得知红三军团在洪门渡所得渡船很少，红一军团在龙街渡口架设浮桥没有成功时，果断于5月5日下令，除留红十三团在洪门渡过江，红一军团和红三军团主力全部火速赶往皎平渡过江。</p>
+        <p class="story-content">为了掩护主力部队安全渡江，董振堂等指挥红五军团在石板河坚决阻击敌人。红五军团利用有利地形，构筑坚固防线，多次打退追敌的进攻。在完成阻击任务后，他们交替掩护，有序撤出阵地，赶到皎平渡渡江。</p>
+        <p class="story-content">担负掩护任务、独立作战的红九军团，在攻占会泽后扩红1500余人，于5月6日从树桔渡全部渡过金沙江。</p>
+        <p class="story-content">从1935年5月3日至9日，在7个昼夜里，2万余中央红军主力利用这6条船，从皎平渡口成功渡过金沙江，未掉一人一马。两天后，敌人追兵赶到江边时，红军早已远去，只留下空荡荡的渡口。</p>
+        <p class="story-content">红军巧渡金沙江，是长征中的一个关键转折点。这一胜利使中央红军摆脱了几十万国民党军的围追堵截，粉碎了蒋介石围歼红军于川、滇、黔边境的计划，为红军北上陕北、实现战略转移奠定了坚实基础。同时，这一胜利彰显了红军的机智、勇敢和顽强的战斗精神，展现了中革军委卓越的战略决策能力和指挥艺术。在极端困难的情况下，红军将士们凭借坚定的信念、紧密的协作和无畏的勇气，创造了军事史上的奇迹，为中国革命保存了有生力量，在中国革命史上留下了浓墨重彩的一笔。</p>
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取各个页面和按钮元素
+            const homePage = document.getElementById('home');
+            const videoPage = document.getElementById('videoPage');
+            const storyPage = document.getElementById('storyPage');
+            const videoOptionBtn = document.getElementById('video-option');
+            const storyOptionBtn = document.getElementById('story-option');
+            const backToHomeFromVideoBtn = document.getElementById('backToHomeFromVideo');
+            const backToHomeFromStoryBtn = document.getElementById('backToHomeFromStory');
+            
+            // 视频播放器
+            const videoPlayer = document.getElementById('video-player');
+            
+            // 点击视频介绍按钮，进入视频页面
+            videoOptionBtn.addEventListener('click', function() {
+                homePage.style.display = 'none';
+                videoPage.style.display = 'block';
+                // 视频自动播放（需要用户交互触发，这里通过按钮点击触发）
+                videoPlayer.play();
+            });
+            
+            // 点击故事介绍按钮，进入故事页面
+            storyOptionBtn.addEventListener('click', function() {
+                homePage.style.display = 'none';
+                storyPage.style.display = 'block';
+            });
+            
+            // 点击返回按钮，从视频页面返回选择界面
+            backToHomeFromVideoBtn.addEventListener('click', function() {
+                videoPage.style.display = 'none';
+                homePage.style.display = 'flex';
+                // 暂停视频播放
+                videoPlayer.pause();
+            });
+            
+            // 点击返回按钮，从故事页面返回选择界面
+            backToHomeFromStoryBtn.addEventListener('click', function() {
+                storyPage.style.display = 'none';
+                homePage.style.display = 'flex';
+            });
+        });
+    </script>
 </body>
 </html>
         });

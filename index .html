@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>医疗救援科普题目</title>
+    <style>
+        /* ============ 基础布局（来自 index2 / index3 的合并样式） ============ */
+        body * { box-sizing: border-box; flex-shrink: 0; }
+        body { font-family: PingFangSC-Regular, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC-Light", "Microsoft YaHei"; margin:0; padding:0; background:#fff; }
+        input { background-color: transparent; border: 0; outline: none; }
+        button { margin:0; padding:0; border:1px solid transparent; outline:none; background:transparent; }
+        .flex-col { display:flex; flex-direction:column; }
+        .flex-row { display:flex; flex-direction:row; }
+        .justify-center { justify-content:center; }
+        .align-center { align-items:center; }
+        .justify-between { justify-content: space-between; }
+
+        /* 页面容器 */
+        .page { background-color: rgba(255,255,255,0.9); position:relative; width:375px; height:812px; overflow:hidden; margin:0 auto; }
+
+        /* 背景盒子（复用设计图） */
+        .box_1, .block_1 {
+            width: 375px;
+            height: 811px;
+            background: url(./img/FigmaDDSSlicePNGecef475cc24d0d1caea9183b89ffadfd.png) 100% no-repeat;
+            background-size: 100% 100%;
+            margin-top: 1px;
+            position: relative; /* 确保子元素定位正确 */
+        }
+
+        .group_1 {
+    width: 341px;
+    height: 18px;
+    margin: 14px auto 0; /* 修改这里：将左右margin改为auto实现居中 */
+    position: relative;
+    z-index: 10;
+    display: flex; /* 确保是flex容器 */
+    justify-content: center; /* 内容水平居中 */
+}
+        .text_1 {
+            width: 54px;
+            height: 18px;
+            overflow-wrap: break-word;
+            color: rgba(0, 0, 0, 1);
+            font-size: 15px;
+            letter-spacing: -0.3px;
+            font-family: SF Pro Text-Regular;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 15px;
+        }
+.image-wrapper_1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+        /* 标题/题目/选项 */
+        .text_2 {
+            width: 266px;
+            height: 29px;
+            overflow-wrap: break-word;
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 24px;
+            font-family: Inter-Semi Bold;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 24px;
+            margin: 42px auto 0;
+            position: relative;
+            z-index: 10;
+        }
+        .text-wrapper_1 {
+            width: 320px; /* 加宽题目容器，避免文字换行 */
+            height: auto; /* 取消固定高度，适配文字 */
+            overflow-wrap: break-word;
+            font-size: 0;
+            font-family: Inter-Regular;
+            text-align: left;
+            line-height: 22px;
+            margin: 26px auto 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .text_3, .text_5 {
+            width: auto; /* 取消固定宽度 */
+            height: auto; /* 取消固定高度 */
+            overflow-wrap: break-word;
+            color: rgba(51, 51, 51, 1);
+            font-size: 15px;
+            font-family: Inter-Regular;
+            text-align: left;
+            line-height: 22px;
+        }
+        .text_4 {
+            width: auto; /* 取消固定宽度 */
+            height: auto; /* 取消固定高度 */
+            overflow-wrap: break-word;
+            color: rgba(255, 61, 61, 1);
+            font-size: 15px;
+            font-family: Inter-Medium;
+            font-weight: 500;
+            text-align: left;
+            line-height: 22px;
+        }
+
+        .list_1 {
+            width: 325px; /* 与 index3 一致，适配选项文字 */
+            margin: 25px auto 0; /* 调整间距，避免与题目重叠 */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* 选项之间的间距，与 index3 一致 */
+            z-index: 10; /* 确保选项在背景上层 */
+            position: relative;
+        }
+
+        /* 3. 修复 .list_1 > div 选项容器样式（圆角+背景） */
+        .list_1 > div {
+            background-color: rgba(255, 255, 255, 1); /* 白色背景，与 index3 一致 */
+            border-radius: 100px; /* 圆形圆角，而非 12px 方形 */
+            height: 54px; /* 与 index3 一致，适配文字高度 */
+            border: none; /* 去掉默认边框，与 index3 一致 */
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .text_6 { margin-left:10px; font-size:15px; color:#333; }
+        .label_2 { width:24px; height:24px; margin-left:auto; }
+
+        .block_1 .missing-illustration {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%); /* 水平居中 */
+            top: 535px;
+            height: auto; /* 高度自适应，保持图片比例 */
+            width: 80%; /* 横向占满70%页面宽度 */
+            opacity: 100%;
+            border-radius: 0px;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .block_1 .missing-illustration img {
+            width: 100%; /* 图片宽度充满容器 */
+            height: auto; /* 高度自适应，保持图片比例 */
+            object-fit: contain;
+        }
+
+        #question1 .block_1 .missing-illustration {
+            height: 320px !important;  /* 增加优先级 */
+            width: 200px !important;
+            top: 500px !important;     /* 调整垂直位置 */
+            position: absolute !important;
+        }
+
+        /* 底部按钮 / 弹窗 */
+        .bottom-btn {
+            background-color: rgba(255, 80, 105, 1);
+            border-radius: 50px;
+            height: 56px;
+            width: 325px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 40px; /* 调整底部距离，与 index3 一致 */
+            z-index: 300;
+            cursor: pointer;
+            display: none;
+        }
+        .text_7 {
+            width: auto;
+            height: 22px;
+            overflow-wrap: break-word;
+            color: rgba(255, 255, 255, 1);
+            font-size: 18px;
+            font-family: Inter-Semi Bold;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 18px;
+            margin: 0;
+        }
+        
+        /* 解析弹窗样式 - 修复文字错位问题 */
+        .block_4 {
+            box-shadow: 0px -15px 20px 0px rgba(68, 15, 15, 0.51);
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 20px;
+            position: absolute;
+            left: 0;
+            top: 250px;
+            width: 375px;
+            height: 580px;
+            z-index: 200;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 解析内容容器 - 修复关键样式 */
+        .analysis-content {
+            width: 315px;
+            height: auto;
+            overflow-wrap: break-word;
+            font-size: 16px;
+            font-family: Inter-Regular;
+            text-align: left;
+            margin: 30px auto 0;
+            padding: 0;
+            flex: 1;
+padding-bottom: 70px;
+            overflow-y: auto;
+        }
+
+        .paragraph_1, .paragraph_2, .paragraph_3 {
+            width: 100%;
+            height: auto;
+            overflow-wrap: break-word;
+            color: rgba(0, 0, 0, 1);
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 15px;
+        }
+        .paragraph_1 {
+            font-family: Inter-Regular;
+            text-align: left;
+        }
+        .paragraph_2 {
+            font-family: Inter-Semi Bold;
+            text-align: left;
+            font-weight: 600;
+        }
+        .paragraph_3 {
+            font-family: Inter-Regular;
+            text-align: left;
+        }
+
+.group_2 {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 20px;
+    display: flex;
+	position: relative;
+    align-items: center;
+top: 10px; 
+}
+        /* 下一题按钮 */
+        .text-wrapper_3 {
+    background-color: rgba(255, 80, 105, 1);
+    border-radius: 50px;
+    height: 40px;
+    width: 325px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 60px; /* 距离底部20px */
+    z-index: 300;
+}
+
+        /* 题目容器显示/隐藏 */
+        .question { display:none; width:100%; height:100%; }
+        .question.active { display:block; }
+
+        /* 年龄输入页样式 */
+        .age-page { display:block; }
+        .age-input-wrapper { width:276px; height:54px; margin:42px auto 208px; position:relative; display:flex; justify-content:center; align-items:center; }
+        .age-input { width:100%; height:100%; background: url(./img/FigmaDDSSlicePNG2ca3369295dd59244870b0f940acb926.png) 100% no-repeat; background-size:100% 100%; text-align:center; font-size:20px; color:#000; padding:0 10px; border:0; }
+        .age-continue-btn {
+    background-color: rgba(255,80,105,1);
+    border-radius:50px;
+    height:56px;
+    width:325px;
+    margin: 80px auto 0; /* 将133px改为50px，减少上边距 */
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+        .age-text_4 { color:#fff; font-size:18px; font-weight:600; }
+
+        /* 图片加载失败兜底 */
+        .option-icon { border:1px solid transparent; }
+        .option-icon[src$="FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"]:error { border-color:#ff3d3d; background-color:#ff3d3d; border-radius:50%; }
+
+        /* 一些小调整 */
+        .page * { -webkit-user-select:none; -ms-user-select:none; user-select:none; }
+    </style>
+</head>
+<body>
+    <div class="page flex-col">
+
+        <!-- ========== 年龄输入页 ========== -->
+        <div class="age-page" id="agePage">
+          <div class="box_1 flex-col align-center">
+            <div class="group_1 flex-row">
+            </div>
+
+            <div class="group_3 flex-row justify-between align-center" style="width: 100%; padding: 0 20px; margin-top: 20px;">
+                <img class="label_1" referrerpolicy="no-referrer" src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png" />
+                <div class="image-wrapper_1 flex-col">
+                  <img class="image_2" referrerpolicy="no-referrer" src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png" />
+                </div>
+            </div>
+
+            <div class="text-group_1 flex-col align-center" style="margin-top: 100px;">
+                <span class="text_2">How&nbsp;old&nbsp;are&nbsp;you?</span>
+                <span class="text_3" style="margin-top: 10px;">Please&nbsp;provide&nbsp;your&nbsp;age&nbsp;in&nbsp;years</span>
+            </div>
+
+            <!-- 输入框（居中） -->
+            <div class="age-input-wrapper">
+                <input 
+                  type="text" 
+                  class="age-input" 
+                  placeholder="Enter your age"
+                  inputmode="numeric"
+                  maxlength="3"
+                  id="ageInput"
+                />
+            </div>
+
+            <!-- Continue按钮 -->
+            <div class="age-continue-btn" id="continueBtn">
+                <span class="age-text_4">Continue</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 第一题：流鼻血急救题 -->
+        <div class="question" id="question1">
+            <div class="block_1 flex-col">
+                <!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+
+                <!-- 标题与题目 -->
+                <span class="text_2">急救启蒙</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">小明突然流鼻血了，以下</span>
+                    <span class="text_4">不可取</span>
+                    <span class="text_5">的做法是：</span>
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;坐下来身体稍微向前倾</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.用冷毛巾敷额头</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;用冷毛巾敷脖子</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：正确→绿色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="correct">
+                        <span class="text_6">D.&nbsp;仰头</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/FigmaDDSSlicePNGc9bad6d4066129b6d40d9bbc64ba76bd.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container1" style="display: none;">
+                <span class="text_7" id="bottom-btn1">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal1" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：D
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        流鼻血时，正确做法包括：坐直并身体稍前倾（避免血液流入喉咙）、用冷毛巾敷脖子或额头（促进血管收缩止血）；而仰头会导致血液经后鼻道流入咽喉，可能引起呛咳或误咽，属于错误做法。
+                        <br />&nbsp;<br />
+                    </span>
+                </div>
+<div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn1">下一题</span>
+</div>
+            </div>
+        </div>
+
+        <!-- 第二题：烫伤急救题 -->
+        <div class="question" id="question2">
+            <div class="block_1 flex-col">
+                <!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <!-- 标题与题目 -->
+                <span class="text_2">急救启蒙</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">小刘在厨房做饭时，不慎被热水烫伤了手臂，局部皮肤发红、有轻微疼痛但未起水泡。以下</span>
+                    <span class="text_4">正确</span>
+                    <span class="text_5">的做法是：</span>
+                </div>
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;用冰块直接敷在烫伤处</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.&nbsp;在烫伤处涂抹牙膏</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- C选项：正确→绿色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="correct">
+                        <span class="text_6">C.&nbsp;先用冷水冲洗，再用干净纱布覆盖</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;用酒精消毒后裹紧保鲜膜</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+                <!-- 背景插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/FigmaDDSSlicePNG3b62130e6ac05accfef808ca1f42064e.png" 
+                        referrerpolicy="no-referrer"
+                        alt="烫伤急救背景插图"
+                    />
+                </div>
+            </div>
+            <!-- 底部"查看解析"按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container2" style="display: none;">
+                <span class="text_7" id="bottom-btn2">查看解析</span>
+            </div>
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal2" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：C
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        烫伤后正确的初步处理原则是"冲、脱、泡、盖、送"。选项C中，先用冷水冲洗（冲）可快速降温，减少热力对皮肤的进一步损伤，再用干净纱布覆盖（盖）能保护创面、预防感染，符合规范。
+                        <br /><br />
+                        其他选项错误原因：
+                        <br />
+                        A：冰块直接敷会冻伤皮肤，加重损伤；
+                        <br />
+                        B：涂抹牙膏会影响皮肤散热，还可能污染创面；
+                        <br />
+                        D：酒精刺激性强，会加重疼痛和损伤，保鲜膜包裹过紧不利于皮肤透气。
+                    </span>
+                </div>
+                <!-- 下一题按钮 -->
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn2">下一题</span>
+                </div>
+            </div>
+        </div>
+        <!-- 第一题：心肺复苏题 -->
+        <div class="question" id="question3">
+            <div class="block_1 flex-col">
+                 <!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>               
+                <span class="text_2">心肺复苏</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">小陈下班途中发现一名工人倒在建筑工地旁，身体接触裸露电线，周围有积水。此时小陈首先应如何行动？</span>
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;立即冲过去将工人拖离电线区域</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.站在原处拨打120并大声呼救</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：正确→绿色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="correct">
+                        <span class="text_6">C.&nbsp;木棍挑开电线，如无漏电再靠近</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;直接开始检查工人意识和呼吸</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/3.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container3" style="display: none;">
+                <span class="text_7" id="bottom-btn3">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal3" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：C
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        该场景存在触电危险，心肺复苏的首要原则是确保施救环境安全。选项C正确执行了断电操作（用绝缘体移除电线）并确认安全，避免施救者成为第二名受害者。A选项直接接触可能触电；B选项未消除危险源；D选项在未排除环境危险前贸然靠近，均违反安全优先原则。
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn3">下一题</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二题：重复第一题内容 -->
+        <div class="question" id="question4">
+            <div class="block_1 flex-col">
+               <!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <!-- 标题与题目 -->
+                <span class="text_2">心肺复苏</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">图书馆内，一位老人突然从座椅滑落倒地。小王上前救助，见老人闭眼不动，此时</span>
+                    <span class="text_4">正确的</span>
+                    <span class="text_5">操作是：</span>
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;用力摇晃喊醒，观察反应</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.解衣领听呼吸音</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：正确→绿色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="correct">
+                        <span class="text_6">C.&nbsp;轻拍呼喊，观察反应</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;直接触摸手腕桡动脉检查脉搏</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/4.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container4" style="display: none;">
+                <span class="text_7" id="bottom-btn4">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal4" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：C
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        检查意识需采用“轻拍重唤”法，避免剧烈摇晃（尤其对老年人易致颈椎损伤）。选项C规范执行了轻拍肩部、大声呼唤、观察反应三个步骤。A选项“用力摇晃”可能加重潜在损伤；B、D选项跳过了意识评估直接检查呼吸脉搏，顺序错误。
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn4">下一题</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三题：重复第一题内容 -->
+        <div class="question" id="question5">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">心肺复苏</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">篮球赛中，一名球员突发心跳骤停倒地。你发现其胸口正中有纵向陈旧伤疤，实施按压时应如何定位？</span>
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;直接按压手术疤痕上端</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+		    <!-- B选项：正确→绿色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="correct">
+                        <span class="text_6">B.两乳头连线中点，避开疤痕区域</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;剑突上两横指处垂直按压</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;左胸第五肋间锁骨中线处</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/5.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container5" style="display: none;">
+                <span class="text_7" id="bottom-btn5">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal5" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：B
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        胸外按压标准位点为“两乳头连线中点”（胸骨下半部），即使存在手术疤痕也需优先保证按压有效性。选项B正确定位并避开疤痕减少损伤风险。A选项按压疤痕可能影响按压深度；C选项（剑突上）位置过低易伤及肝脏；D选项偏离胸骨无法有效泵血。
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn5">下一题</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第四题：重复第一题内容 -->
+        <div class="question" id="question6">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">心肺复苏</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">小美救助溺水者时，将其救上岸后发现口腔内有大量水草泥沙，无自主呼吸。此时开放气道前关键步骤</span>
+                    <span class="text_4">正确的</span>
+                    <span class="text_5">是：</span>
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;立即采用仰头提颏法打开气道</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.将患者侧卧，用力拍背排出水分</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：正确→绿色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="correct">
+                        <span class="text_6">C.&nbsp;用手指快速清理口腔异物</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+		    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                    
+                        <span class="text_6">D.&nbsp;直接开始人工呼吸冲开阻塞</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/6.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container6" style="display: none;">
+                <span class="text_7" id="bottom-btn6">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal6" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：C
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        气道异物会阻碍通气，必须先清理再人工呼吸。选项C正确执行了口腔异物清除（可用手指裹布快速清扫），确保气道通畅。A选项未清理直接开放气道可能导致异物深入；B选项拍背延误黄金时间且无效；D选项可能将异物吹入气管加重窒息。
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn6">下一题</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第五题：重复第一题内容 -->
+        <div class="question" id="question7">
+            <div class="block_1 flex-col">
+                <!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <!-- 标题与题目 -->
+                <span class="text_2">心肺复苏</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">一名急救员对无反应、无呼吸的成年患者实施心肺复苏（CPR）。以下关于其操作步骤的描述中，存在</span>
+                    <span class="text_4">错误的</span>
+                    <span class="text_5">是：</span>
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;触摸颈动脉搏动，同时观察呼吸</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.按压定位乳头中点，确保回弹</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;清理异物，仰头提颏，捏鼻吹气</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：正确→绿色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="correct">
+                        <span class="text_6">D.&nbsp;按压深6cm，30次后1次呼吸</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/7.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container7" style="display: none;">
+                <span class="text_7" id="bottom-btn7">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal7" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：D
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        选项A、B、C描述均正确，D错误。循环比例应为30:2，即每按压30次后给予2次人工呼吸。
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn7">下一题</span>
+                </div>
+            </div>
+        </div>
+
+<!-- 第一题：海姆立克急救题 -->
+        <div class="question" id="question8">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">海姆立克急救</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">家庭聚餐时，爷爷正夹起一块红烧鱼，突然脸色涨红、双手掐住脖子，说不出话，也无法咳嗽。一旁的孙子小明发现爷爷表情痛苦，试图拍他后背但没有效果。此时，小明的爸爸应该怎么做？
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;加大力度继续拍打爷爷后背</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：正确→绿色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="correct">
+                        <span class="text_6">B.在脐上两指处向上向内冲击腹部</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;仰头，用手指伸进喉咙抠取异物</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;先喂爷爷喝口水，缓解喉咙刺激</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/8.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container8" style="display: none;">
+                <span class="text_7" id="bottom-btn8">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal8" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：B
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        爷爷的症状（无法说话、咳嗽，双手掐颈）符合气道异物完全梗阻，此时海姆立克急救法是首选。成人操作要点为：施救者站在患者背后，双臂环抱其腰部，一手握拳抵住肚脐上方两横指处，另一手抓住握拳手，快速向上向内冲击腹部，重复至异物排出。A项拍打适用于部分梗阻（能咳嗽），C项易导致异物更深或损伤喉咙，D项可能加重梗阻。
+                        <br />&nbsp;<br />
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn8">下一题</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二题：海姆立克自救题 -->
+        <div class="question" id="question9">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">海姆立克急救</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">小李俊在家吃坚果时，突然感觉喉咙被卡住，无法说话、咳嗽，脸色也开始发红。这种情况下，他若采用海姆立克自救法，</span>
+                    <span class="text_4">正确的</span>
+                    <span class="text_5">的做法是：</span>
+                </div>
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;双拳抵脐上两横指，向内上冲击</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- B选项：正确→绿色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="correct">
+                        <span class="text_6">B.&nbsp;在桌旁弯腰冲击脐上两横指处</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;躺下用拳头反复按压胸口</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;大口喝水冲开异物并拍打喉咙</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+                <!-- 背景插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/9.png" 
+                        referrerpolicy="no-referrer"
+                        alt="自救背景插图"
+                    />
+                </div>
+            </div>
+            <!-- 底部"查看解析"按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container9" style="display: none;">
+                <span class="text_7" id="bottom-btn9">查看解析</span>
+            </div>
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal9" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：B
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        小李俊的情景属于独自一人发生气道异物梗阻且无法呼救的情况。此时应利用身边坚硬物体（如桌沿、椅背）自救：弯腰将肚脐上方两横指处（即腹部冲击点）抵住物体边缘，快速向内上方用力冲击，通过外力挤压腹部排出异物。 A选项是他人救助时的标准操作，不适合独居者自救；C、D选项操作错误，不仅无法有效解除梗阻，还可能加重窒息或导致呛咳.
+                    </span>
+                </div>
+                <!-- 下一题按钮 -->
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn9">下一题</span>
+                </div>
+            </div>
+        </div>
+<!-- 第一题：糖尿病管理题 -->
+        <div class="question" id="question10">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">慢性病管理</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">郁先生被诊断为2型糖尿病，医生建议他进行饮食控制和运动管理。以下关于他日常管理的做法，</span>
+                    <span class="text_4">正确的</span>
+                    <span class="text_5">是：</span>
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;忌主食，仅食肉类与蔬菜</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.每周3次，每次20分钟跑步</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;空腹监测，正常即停降糖药</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：正确→绿色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="correct">
+                        <span class="text_6">D.&nbsp;全谷物替代精米，定时定量用餐</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/10.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container10" style="display: none;">
+                <span class="text_7" id="bottom-btn10">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal10" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：D
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        选项D的做法符合糖尿病饮食管理原则，全谷物富含膳食纤维，可延缓血糖上升，定时定量进餐有助于维持血糖稳定。
+                        <br /><br />
+                        其他选项均存在错误：
+                        <br />
+                        选项A：完全不吃主食会导致营养不均衡，还可能因饥饿引发低血糖或酮症，反而不利于血糖控制；
+                        <br />
+                        选项B：糖尿病患者适合中等强度运动（如快走、慢跑），剧烈运动可能导致血糖波动过大，且每次运动时间建议30分钟左右；
+                        <br />
+                        选项C：血糖正常是药物和生活方式共同作用的结果，擅自停药易导致血糖反弹，需遵医嘱调整用药。
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn10">下一题</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二题：高血压管理题 -->
+        <div class="question" id="question11">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">慢性病管理</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">邹阿姨患有高血压，一直在服用降压药。以下关于她日常管理的做法，</span>
+                    <span class="text_4">错误的</span>
+                    <span class="text_5">是：</span>
+                </div>
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;定时测血压，记录并向医生反馈</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.&nbsp;少使用腌制品，烹饪时减少用盐</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- C选项：正确→绿色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="correct">
+                        <span class="text_6">C.&nbsp;血压正常即停药，不用监测</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;每周5次散步，避免激动劳累</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+                <!-- 背景插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/11.png" 
+                        referrerpolicy="no-referrer"
+                        alt="烫伤急救背景插图"
+                    />
+                </div>
+            </div>
+            <!-- 底部"查看解析"按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container11" style="display: none;">
+                <span class="text_7" id="bottom-btn11">查看解析</span>
+            </div>
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal11" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：C
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        选项C的做法错误，高血压患者即使血压暂时达标，也需在医生指导下调整用药，不能自行停药。突然停药可能导致血压反跳升高，增加心脑血管事件风险。
+                        <br /><br />
+                        其他选项均为正确的管理方式：
+                        <br />
+                        选项A：规律监测血压并反馈，有助于医生评估治疗效果；
+                        <br />
+                        选项B：减少钠盐摄入（如少吃腌制食品、少放盐）是高血压管理的重要措施；
+                        <br />
+                        选项D：适度运动（如散步）和情绪管理，可辅助控制血压。
+                    </span>
+                </div>
+                <!-- 下一题按钮 -->
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn11">下一题</span>
+                </div>
+            </div>
+        </div>
+<!-- 第一题：压迫止血题 -->
+        <div class="question" id="question12">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">压迫止血</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">小王在厨房切菜时，不小心切到了左手食指，伤口较深，鲜血不断涌出。他立刻找来干净的纱布，此时采用直接压迫止血法的</span>
+                    <span class="text_4">正确</span>
+                    <span class="text_5">操作是：</span>
+                </div>
+
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;轻覆纱布不施压，防止加剧疼痛</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：正确→绿色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="correct">
+                        <span class="text_6">B.紧按伤口，抬左手高于心脏</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;按住伤口周围，避直接触碰</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;撒消炎药粉，再简单包裹纱布</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/12.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container12" style="display: none;">
+                <span class="text_7" id="bottom-btn12">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal12" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：B
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        直接压迫止血法的核心是通过外力压迫破损血管，阻止血液流出。小王的手指伤口出血较急，正确操作应为用干净纱布直接紧压伤口处，同时抬高伤肢（手指高于心脏）可借助重力减少局部血流，增强止血效果。
+                        <br />
+                        A选项未施加压力，无法止血；C选项未直接压迫伤口，止血无效；D选项撒药粉可能污染伤口，且简单包裹无法达到压迫止血的力度，均为错误操作。因此，B选项是该情景下的正确选择。
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn12">下一题</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二题：三角巾包扎管理题 -->
+        <div class="question" id="question13">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">三角巾包扎</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">露营时小李被掉落的树枝砸中头部，左侧额头出现一道约3厘米的伤口，有少量出血且头晕。此时你手边只有急救包中的三角巾，如何使用三角巾对小李的伤口进行                    
+		<span class="text_4">正确</span>
+                    <span class="text_5">包扎？</span>
+                </div>
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;三角巾对伤口，拉紧打结止血</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- B选项：正确→绿色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="correct">
+                        <span class="text_6">B.&nbsp;检查伤口，三角巾盖伤后绕头固定</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;平躺盖伤，颈后打结，立即活动</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;不处理直接包扎，随意缠头打结</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+                <!-- 背景插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/13.png" 
+                        referrerpolicy="no-referrer"
+                        alt="烫伤急救背景插图"
+                    />
+                </div>
+            </div>
+            <!-- 底部"查看解析"按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container13" style="display: none;">
+                <span class="text_7" id="bottom-btn13">查看解析</span>
+            </div>
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal13" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：B
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        选项B的操作符合头部伤口三角巾包扎的基本规范：先让伤者保持舒适体位（坐下低头），检查伤口后，以顶角覆盖伤口、底边固定于前额，通过耳后绕枕部交叉再回前额打结的方式固定，最后拉紧顶角固定，既保证了包扎牢固，又避免过度压迫影响头部血液循环，同时兼顾了对伤者的基本保护。其他选项存在操作错误（如用力过紧、体位不当、不检查伤口、包扎方式错误等）。
+                    </span>
+                </div>
+                <!-- 下一题按钮 -->
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn13">下一题</span>
+                </div>
+            </div>
+        </div>
+<!-- 第一题：压迫止血题 -->
+        <div class="question" id="question14">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">AED使用</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">小宁正在公园救助一名昏迷的5岁女童（体重20kg），准备使用AED。打开设备后发现，AED包内只有一组成人电极片。小宁应该怎么做？</span>
+                </div>
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;贴右上胸及左下胸外侧</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- B选项：正确→绿色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="correct">
+                        <span class="text_6">B.贴胸前正中及背后左肩胛处</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- C选项：错误→红色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="wrong">
+                        <span class="text_6">C.&nbsp;剪小电极片贴前胸后背</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;将两片电极片重叠贴于胸前</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+
+                <!-- 插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/14.png" 
+                        referrerpolicy="no-referrer"
+                        alt="背景插图"
+                    />
+                </div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container14" style="display: none;">
+                <span class="text_7" id="bottom-btn14">查看解析</span>
+            </div>
+
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal14" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：B
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        当为5岁女童（体重20kg）使用AED且仅有成人电极片时，正确操作是将电极片按幼儿位置粘贴：一片置于胸前正中（胸骨下方），另一片置于背后左肩胛区。此位置能缩短电流路径，适应儿童较小胸腔，确保电流有效穿过心脏。
+                        <br /><br />
+                        选项A：此为成人位置，儿童胸腔较小，电流可能无法覆盖心脏，导致除颤无效。
+			<br />
+			选项C：剪裁会破坏电极片内部导电凝胶层，使电流分布不均，极可能灼伤皮肤并影响除颤效果。
+			<br />
+			选项D：电极片重叠会导致电流无法形成回路，除颤完全无效，且浪费急救时间。
+                    </span>
+                </div>
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn14">下一题</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二题：AED使用题 -->
+        <div class="question" id="question15">
+            <div class="block_1 flex-col">
+<!-- 顶部时间与状态栏 -->
+        <div class="group_1 flex-row">
+        </div>
+        
+        <!-- 顶部图标区 -->
+        <div class="group_2 flex-row justify-between">
+            <img
+                class="label_1"
+                referrerpolicy="no-referrer"
+                src="./img/FigmaDDSSlicePNGfc91f71cd43c5a527cdc5ebcba617f64.png"
+                alt="顶部标签图标"
+            />
+            <div class="image-wrapper_1 flex-col">
+                <img
+                    class="image_2"
+                    referrerpolicy="no-referrer"
+                    src="./img/FigmaDDSSlicePNGb26f8f73c1712c91453e50c16f2b72bd.png"
+                    alt="进度条图标"
+                />
+            </div>
+        </div>
+                <span class="text_2">AED使用</span>
+                <div class="text-wrapper_1">
+                    <span class="text_3">乐乐发现一位成年男性突然倒地，经检查无意识、无呼吸。紧急情况下，她准备对这位男性使用AED，但发现他的胸口多汗、有药物贴片（硝酸甘油），左胸有心脏起搏器植入疤痕。此时，乐乐的
+                  <span class="text_4">正确</span>
+                  <span class="text_5">操作是：</span>
+                </div>
+                <!-- 选项列表 -->
+                <div class="list_1 flex-col">
+                    <!-- A选项：错误→红色圆圈 -->
+                    <div class="group_3 flex-row" data-answer="wrong">
+                        <span class="text_6">A.&nbsp;因有起搏器，放弃AED，立即按压</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- B选项：错误→红色圆圈 -->
+                    <div class="group_4 flex-row" data-answer="wrong">
+                        <span class="text_6">B.&nbsp;直接贴片开机操作</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- C选项：正确→绿色圆圈 -->
+                    <div class="group_6 flex-row" data-answer="correct">
+                        <span class="text_6">C.&nbsp;擦汗，撕贴片，避起搏器贴电极片</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                    <!-- D选项：错误→红色圆圈 -->
+                    <div class="group_7 flex-row" data-answer="wrong">
+                        <span class="text_6">D.&nbsp;电击时同时按压</span>
+                        <img
+                            class="label_2 option-icon"
+                            referrerpolicy="no-referrer"
+                            src="./img/FigmaDDSSlicePNG9a12a34dea33d56f86b4a466b31dc088.png"
+                            data-correct-src="./img/FigmaDDSSlicePNG9f2056e86bf084bad046304ee72cd3f5.png"
+                            data-wrong-src="./img/FigmaDDSSlicePNGd3968649f1b68df42c3182fd55ff6b88.png"
+                            alt="选项图标"
+                        />
+                    </div>
+                </div>
+                <!-- 底部装饰区 -->
+                <div class="group_5 flex-col"></div>
+                <!-- 背景插图 -->
+                <div class="missing-illustration">
+                    <img 
+                        src="./img/15.png" 
+                        referrerpolicy="no-referrer"
+                        alt="烫伤急救背景插图"
+                    />
+                </div>
+            </div>
+            <!-- 底部"查看解析"按钮 -->
+            <div class="bottom-btn flex-col" id="bottom-btn-container15" style="display: none;">
+                <span class="text_7" id="bottom-btn15">查看解析</span>
+            </div>
+            <!-- 解析弹窗 -->
+            <div class="block_4 flex-col" id="analysisModal15" style="display: none;">
+                <div class="analysis-content">
+                    <span class="paragraph_1">
+                        正确答案：C
+                        <br /><br />
+                    </span>
+                    <span class="paragraph_2">
+                        解析：<br />
+                    </span>
+                    <span class="paragraph_3">
+                        使用AED的正确操作原则是确保皮肤接触良好、避开干扰设备、严格遵循安全流程。选项C中，擦干胸口汗水可避免水分导致电流短路；撕掉药物贴片并清洁 可防止药物贴片阻碍电流传导或引发灼伤；避开起搏器可避免损坏起搏器，同时保证电流有效穿过心脏。
+			<br /><br />
+                        选项A：起搏器患者仍可使用AED（仅需避开植入位置），放弃AED将延误最佳除颤时机。
+			<br />
+			选项B：未处理汗液和药物贴片可能导致电流传导受阻，除颤可能无效且易灼伤皮肤。
+			<br />
+			选项D：AED放电时不可触碰患者，应离开患者身体并提示身边人。如果触碰，电流可能经施救者身体传导，造成触电风险，且干扰除颤回路。
+                    </span>
+                </div>
+                <!-- 下一题按钮 -->
+                <div class="text-wrapper_3 flex-col">
+                    <span class="text_7" id="next-question-btn15">已完成所有题目</span>
+                </div>
+            </div>
+        </div>
+
+
+
+    <script>
+        /* ============ flexible.js（保留原作者缩放逻辑） ============ */
+        (function flexible(window, document) {
+            function resetFontSize() {
+                const size = (document.documentElement.clientWidth / 375) * 37.5;
+                document.documentElement.style.fontSize = size + 'px';
+            }
+            window.addEventListener('pageshow', resetFontSize);
+            window.addEventListener('resize', resetFontSize);
+        })(window, document);
+
+        /* ============ 合并后的核心交互逻辑 ============ */
+        document.addEventListener('DOMContentLoaded', function() {
+            const ageInput = document.getElementById('ageInput');
+            const continueBtn = document.getElementById('continueBtn');
+            const agePage = document.getElementById('agePage');
+
+            // 限制年龄输入为数字
+            if (ageInput) {
+                ageInput.addEventListener('input', function() {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+            }
+
+            // 显示某题目（robust）
+            function showQuestion(n) {
+                // 隐藏所有 question
+                document.querySelectorAll('.question').forEach(q => { q.style.display = 'none'; q.classList.remove('active'); });
+                const q = document.getElementById('question' + n);
+                if (q) { q.style.display = 'block'; q.classList.add('active'); initQuestion(n); }
+            }
+
+            // 继续按钮：校验年龄，然后跳至第1题
+            if (continueBtn) {
+                continueBtn.addEventListener('click', function() {
+                    const ageVal = ageInput ? ageInput.value.trim() : '';
+                    const age = Number(ageVal);
+                    if (ageVal !== '' && !isNaN(age) && age >= 0 && age <= 120) {
+                        // 隐藏年龄页，显示第一题
+                        if (agePage) agePage.style.display = 'none';
+                        showQuestion(1);
+                    } else {
+                        alert('Please enter a valid age');
+                    }
+                });
+            }
+
+            // 初始化题目的交互（只初始化一次）
+            function initQuestion(questionNum) {
+                const question = document.getElementById(`question${questionNum}`);
+                if (!question) return;
+                if (question.dataset.inited === '1') return; // 已初始化过
+                question.dataset.inited = '1';
+
+                const options = question.querySelectorAll('[data-answer]');
+                const bottomBtnContainer = document.getElementById(`bottom-btn-container${questionNum}`);
+                const bottomBtn = document.getElementById(`bottom-btn${questionNum}`);
+                const analysisModal = document.getElementById(`analysisModal${questionNum}`);
+                const nextQuestionBtn = document.getElementById(`next-question-btn${questionNum}`);
+
+                let isSelected = false;
+
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        if (isSelected) return;
+                        isSelected = true;
+
+                        const icon = option.querySelector('.option-icon');
+                        const answer = option.getAttribute('data-answer');
+
+                        if (icon) {
+                            if (answer === 'correct') icon.src = icon.getAttribute('data-correct-src') || icon.src;
+                            else icon.src = icon.getAttribute('data-wrong-src') || icon.src;
+                        }
+
+                        // 显示"查看解析"按钮（如果存在）
+                        if (bottomBtnContainer) bottomBtnContainer.style.display = 'flex';
+                    });
+                });
+
+                // 查看解析
+                // 查看解析
+if (bottomBtn && analysisModal) {
+    bottomBtn.addEventListener('click', () => {
+        analysisModal.style.display = 'block';
+        // 添加这行代码：隐藏查看解析按钮
+        if (bottomBtnContainer) bottomBtnContainer.style.display = 'none';
+    });
+}
+
+                // 下一题（隐藏当前，显示下一个）
+                if (nextQuestionBtn) {
+                    nextQuestionBtn.addEventListener('click', () => {
+                        if (analysisModal) analysisModal.style.display = 'none';
+                        question.style.display = 'none';
+                        const nextNum = questionNum + 1;
+                        const nextQuestion = document.getElementById(`question${nextNum}`);
+                        if (nextQuestion) {
+                            nextQuestion.style.display = 'block';
+                            nextQuestion.classList.add('active');
+                            initQuestion(nextNum);
+                        } else {
+                            alert('Quiz completed!');
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
